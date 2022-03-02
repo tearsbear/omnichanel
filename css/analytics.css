@@ -1,0 +1,273 @@
+ .analytics-container {
+     margin: 0 auto;
+     max-width: 90%;
+     margin-top: 20px;
+ }
+
+ .card-average-background {
+     height: auto;
+     padding-bottom: 10px;
+     border-radius: 10px 0px 0px 10px;
+ }
+
+ .card-average-content {
+     padding: 10px;
+     margin-left: 0px;
+     margin-top: -30px
+ }
+
+ .card-average-content .list {
+     margin-top: 40px;
+ }
+
+ .card-average-content ul {
+     border-radius: 10px;
+     width: 200px;
+     margin-left: 8px;
+ }
+
+ .card-average-content textarea {
+     height: 45px;
+     width: 200px;
+     margin-left: -15px;
+     font-size: 14px !important;
+ }
+
+ .card-average-spacing-top {
+     margin-left: 10px;
+ }
+
+ .card-average-spacing-top p {
+     margin-top: 45px;
+ }
+
+ .card-average-spacing-top h1 {
+     margin-top: -5px;
+     font-size: 35px;
+ }
+
+ .card-average-spacing-bottom {
+     margin-top: 35px;
+     margin-left: 10px;
+ }
+
+ .card-average-spacing-bottom h1 {
+     margin-top: -5px;
+     font-size: 35px;
+ }
+
+ .card-average-content a {
+     margin-top: -15px;
+     width: 100px;
+     height: 35px;
+     padding: 3px;
+     border-radius: 10px;
+     margin-left: 8px;
+ }
+
+ .card-overview-row {
+     margin-top: -10px;
+ }
+
+ .card-overview-background-waiting {
+     border-radius: 8px;
+     height: 150px;
+     border: 2px solid var(--color1);
+ }
+
+ .card-overview-background-opened {
+     border-radius: 8px;
+     height: 150px;
+     border: 2px solid #3197f3;
+ }
+
+ .card-overview-background-solved {
+     border-radius: 8px;
+     height: 150px;
+     border: 2px solid #65d965;
+ }
+
+ .card-overview-background-bounce {
+     border-radius: 8px;
+     height: 150px;
+     border: 2px solid #ed3833;
+ }
+
+ .card-overview-background-waiting h1, .card-overview-background-opened h1, .card-overview-background-solved h1, .card-overview-background-bounce h1 {
+     margin-top: 5px;
+     font-size: 30px;
+     max-width: 80px;
+ }
+
+ .viewbtn {
+     width: 120px;
+     height: 35px;
+     padding: 3px;
+     margin-top: -10px;
+     border-radius: 8px;
+ }
+
+ .card-datable {
+     border-radius: 20px;
+     margin-top: 10px;
+     padding: 20px;
+     z-index: 999;
+     position: relative;
+     background-color: white;
+     height: auto;
+     padding-bottom: 30px;
+ }
+
+ .sidebar-top {
+     background-color: var(--color3);
+     margin-left: -8px;
+     width: 49.5px;
+     height: 100%;
+     justify-content: center !important;
+ }
+
+ .sidebar-top i {
+     font-size: 25px;
+ }
+
+ .sidebar {
+     margin: 0;
+     padding: 0;
+     width: 50px;
+     background-color: var(--color5);
+     position: fixed;
+     height: 100%;
+     overflow: auto;
+     z-index: 999;
+ }
+
+ .sidebar a {
+     display: block;
+     color: black;
+     padding: 11px 0px;
+     margin-left: -2px;
+     text-decoration: none;
+     text-align: center;
+     color: var(--darkmode-color1);
+     font-size: 20px;
+ }
+
+ .sidebar a.active {
+     background-color: var(--color1);
+     color: var(--darkmode-color1);
+ }
+
+ .sidebar a:hover:not(.active) {
+     background-color: var(--color4);
+     color: var(--darkmode-color1);
+ }
+
+ .sidebar-bottom {
+     position: fixed;
+     bottom: 0;
+ }
+
+ .sidebar-bottom a {
+     padding: 11px 8px;
+     text-align: center;
+     margin-left: 0px !important;
+ }
+
+ .sidebar-bottom i {
+     font-size: 25px;
+ }
+
+ .sidebar-bottom img {
+     text-align: center;
+     justify-content: center;
+     width: 33px;
+ }
+
+ .sidebar-content {
+     overflow-y: auto;
+     margin-top: -30px;
+     height: 100%;
+ }
+
+ .searchbar:after {
+     background: none !important;
+ }
+
+ .searchbar-backdrop.searchbar-backdrop-in {
+     opacity: 0 !important;
+ }
+
+ @media only screen and (max-width: 700px) {
+     .card-analytics {
+         margin-top: 50px;
+         height: 220px;
+         margin-bottom: 40px;
+     }
+     .analytics-header img {
+         width: 250px;
+     }
+     .panel-menu {
+         width: 10px;
+     }
+     .page-content {
+         margin-left: 35px;
+     }
+     .card-average-background {
+         height: 410px;
+         border-radius: 10px 10px 0px 0px;
+     }
+     .card-average-spacing {
+         margin-top: 35px;
+     }
+     .card-overview-row {
+         margin-top: 10px
+     }
+     .row-parent {
+         max-width: 95% !important;
+         margin-bottom: 10px;
+     }
+     .col-parent {
+         margin-left: 0px !important;
+     }
+     .card-overview-background-waiting, .card-overview-background-opened, .card-overview-background-solved, .card-overview-background-bounce {
+         height: 85px;
+         border-width: 1px;
+     }
+     .card-overview-background-waiting h1, .card-overview-background-opened h1, .card-overview-background-solved h1, .card-overview-background-bounce h1 {
+         font-size: 15px;
+         margin-top: -5px;
+     }
+     .card-overview-background-waiting p, .card-overview-background-opened p, .card-overview-background-solved p, .card-overview-background-bounce p {
+         /* max-width: 50px; */
+         font-size: 12px;
+     }
+     
+ }
+
+ @media only screen and (max-width: 900px) {
+    .card-overview-background-waiting h1, .card-overview-background-opened h1, .card-overview-background-solved h1, .card-overview-background-bounce h1 {
+        font-size: 20px;
+        margin-top: -5px;
+    }
+
+ }
+
+ @media only screen and (max-width: 768px) {
+     .card-analytics {
+         margin-top: 50px;
+         margin-bottom: 40px;
+     }
+     .card-overview-background-waiting h1, .card-overview-background-opened h1, .card-overview-background-solved h1, .card-overview-background-bounce h1 {
+        font-size: 15px;
+        margin-top: -5px;
+    }
+
+     
+ }
+
+ @media only screen and (min-width: 800px) {
+     .panel-menu {
+         width: 10px;
+     }
+     
+ }

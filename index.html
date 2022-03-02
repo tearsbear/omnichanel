@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta http-equiv="“Pragma”" content="”no-cache”" />
+    <meta http-equiv="“Expires”" content="”-1″" />
+    <meta http-equiv="“CACHE-CONTROL”" content="”NO-CACHE”" />
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#ffdd00" />
+    <!-- Your app title -->
+    <title>Live Agent</title>
+    <!-- Path to your favicon-->
+    <link rel="shortcut icon" href="/assets/icon.ico" />
+    <!-- Path to Framework7 Library Bundle CSS 
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">-->
+    <link rel="stylesheet" href="css/framework7.bundle.min.css" />
+    <!-- Path to your icon styles-->
+    <link rel="stylesheet" href="css/bootstrap-icons.css" />
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/color_font.css" />
+    <link rel="stylesheet" href="css/_chatroom.css" />
+    <style>
+      .tab-link {
+        height: 45px;
+        background-color: #f9f9f9;
+      }
+
+      .tab-link img {
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+      }
+
+      .tab-border {
+        border-right: 1px solid #ddd;
+      }
+
+      .tab-link-active {
+        background-color: #ddd !important;
+        border: none !important;
+      }
+
+      .tab-link-active img {
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+      }
+
+      .tab-link:hover {
+        background-color: #ddd;
+        border-right: 2px solid #ddd;
+      }
+
+      .tab-link:hover img {
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+      }
+
+      .badge {
+        margin-top: -14px;
+        height: 15px;
+        min-width: 16px;
+        margin-right: -7px;
+        z-index: 99;
+      }
+
+      .list ul:before,
+      .list ul:after,
+      .links-list a:after,
+      .list .item-inner:after,
+      .simple-list li:after {
+        background-color: transparent;
+      }
+
+      .item-link:hover {
+        background-color: #f1f1f1;
+      }
+
+      .item-link:hover .item-title {
+        color: black !important;
+      }
+      .item-link:hover .item-text {
+        color: black !important;
+      }
+
+      .dts-card {
+        height: auto;
+        background-color: #fff;
+        border-radius: 8px 8px 0px 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- App root element -->
+    <div id="app">
+      <!-- Left Panel ListChat & Sidebar -->
+      <div class="panel panel-left panel-menu panel-cover bg-color2">
+        <!-- Top Navbar -->
+        <div class="navbar" style="height: 60px">
+          <div class="navbar-bg bg-color2"></div>
+          <div class="navbar-inner">
+            <div
+              class="left sidebar-top"
+              style="border-bottom: 2px solid #f1f1f1"
+            >
+              <img src="assets/headphones.svg" alt="" />
+            </div>
+            <div style="margin-right: 30px" class="title font-poppins-semibold">
+              NameBotHere Chatroom
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <a href="#" class="popover-open" data-popover=".popover-bot">
+            <img src="assets/format-list-bulleted-square.svg" alt="" />
+          </a>
+          <!-- <a href="#" class="popover-open" data-popover=".popover-bot"><i class="bi bi-view-list"></i></a>
+            <a href="#" class="active external chatroom-tooltip"><i class="bi bi-person-lines-fill"></i></i></a>
+            <a href="#" disabled><i class="bi bi-person-check" style="color:#d8d4d4"></i></a>
+            <a href="#" disabled><i class="bi bi-folder" style="color:#d8d4d4"></i></a>
+         -->
+
+          <!-- Popovers List Bot -->
+          <div class="popover popover-bot">
+            <div class="popover-inner">
+              <div class="block" style="margin-top: 17px">
+                <h3>List bot</h3>
+                <div class="list list-mybot">
+                  <!-- Append List Bot -->
+                  <ul id="listMyBot"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-bottom">
+            <!-- Logout Link -->
+            <!-- <a href="/logout" class="external"><i class="bi bi-box-arrow-left"></i></a>
+                <a href="#" class="popup-open" data-popup=".popup-settings">
+                    <img src="https://ui-avatars.com/api/?rounded=true&background=ffdd00&color=222&name={{username}}" alt="">
+                </a> -->
+          </div>
+        </div>
+
+        <!-- ListChat -->
+        <div class="sidebar-content">
+          <div
+            style="
+              margin: 50px 22px 0px 72px;
+              z-index: 9999;
+              position: relative;
+            "
+          >
+            <div
+              class="row no-gap"
+              style="background-color: #f9f9f9; border-radius: 13px"
+            >
+              <a
+                href="#tab-1"
+                class="col-33 tab-link tab-border tab-link-active"
+                style="border-radius: 10px 0px 0px 10px"
+              >
+                <span class="badge color-red">3</span>
+                <img src="assets/icon/wa.svg" width="28" alt="" />
+              </a>
+              <a href="#tab-2" class="col-33 tab-link tab-border">
+                <span class="badge color-red">7</span>
+                <img src="assets/icon/ig.svg" width="22" alt="" />
+              </a>
+              <a
+                href="#tab-3"
+                class="col-33 tab-link"
+                style="border-radius: 0px 10px 10px 0px"
+              >
+                <span class="badge color-red">1</span>
+                <img src="assets/icon/msg.svg" width="22" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="tabs" style="padding: 0px; margin-top: -50px">
+            <div id="tab-1" class="page-content tab tab-active">
+              <div class="block">
+                <div class="accordion-list custom-accordion">
+                  <div class="accordion-item accordion-item-opened">
+                    <div
+                      class="accordion-item-toggle"
+                      style="padding: 0px 60px"
+                    >
+                      <h3 class="font-poppins-semibold">
+                        <img src="assets/icon/coming.svg" alt="" /> Incoming
+                        Chats
+                        <span style="float: right; margin-right: -50px">2</span>
+                      </h3>
+                    </div>
+                    <div
+                      class="accordion-item-content"
+                      style="min-width: 383px"
+                    >
+                      <div class="list media-list" style="width: 100%">
+                        <!-- Append List myChat from custom.js -->
+                        <ul id="myChatList">
+                          <li style="border-top: 1px solid #f1f1f1">
+                            <a
+                              href="#"
+                              class="item-link item-content"
+                              style="
+                                width: 100%;
+                                margin: 0px 25px;
+                                padding: 10px 30px;
+                                background-color: #f1f1f1;
+                              "
+                            >
+                              <div class="item-media">
+                                <img
+                                  width="50"
+                                  src="https://ui-avatars.com/api/?rounded=true&name=A&background=random"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="item-inner">
+                                <div class="item-title-row">
+                                  <div
+                                    class="item-title chattitle font-poppins-semibold"
+                                  >
+                                    Alea Harris
+                                  </div>
+                                  <div
+                                    class="item-after font-poppins-medium"
+                                    style="font-size: 13px"
+                                  >
+                                    17:14
+                                  </div>
+                                </div>
+                                <div
+                                  class="item-text chattext font-poppins-regular text-color-black"
+                                  style="margin-top: 5px"
+                                >
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit.
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+
+                          <li style="border-top: 1px solid #f1f1f1">
+                            <a
+                              href="#"
+                              class="item-link item-content"
+                              style="
+                                width: 100%;
+                                margin: 0px 25px;
+                                padding: 10px 30px;
+                              "
+                            >
+                              <div class="item-media">
+                                <img
+                                  width="50"
+                                  src="https://ui-avatars.com/api/?rounded=true&name=D&background=random"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="item-inner">
+                                <div class="item-title-row">
+                                  <div
+                                    class="item-title chattitle font-poppins-semibold text-color-gray"
+                                  >
+                                    Dani Sumenah
+                                  </div>
+                                  <div
+                                    class="item-after font-poppins-medium"
+                                    style="font-size: 13px"
+                                  >
+                                    17:14
+                                  </div>
+                                </div>
+                                <div
+                                  class="item-text chattext font-poppins-regular"
+                                  style="margin-top: 5px"
+                                >
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit.
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="accordion-list custom-accordion"
+                  style="margin-top: 40px"
+                >
+                  <div class="accordion-item accordion-item-opened">
+                    <div
+                      class="accordion-item-toggle"
+                      style="padding: 0px 60px"
+                    >
+                      <h3 class="font-poppins-semibold">
+                        <img src="assets/icon/que.svg" alt="" /> Queued Chats
+                        <span style="float: right; margin-right: -50px">1</span>
+                      </h3>
+                    </div>
+                    <div
+                      class="accordion-item-content"
+                      style="min-width: 383px"
+                    >
+                      <div class="list media-list" style="width: 100%">
+                        <!-- Append List myChat from custom.js -->
+                        <ul id="myChatList">
+                          <li style="border-top: 1px solid #f1f1f1">
+                            <a
+                              href="#"
+                              class="item-link item-content"
+                              style="
+                                width: 100%;
+                                margin: 0px 25px;
+                                padding: 10px 30px;
+                              "
+                            >
+                              <div class="item-media">
+                                <img
+                                  width="50"
+                                  src="https://ui-avatars.com/api/?rounded=true&name=S&background=random"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="item-inner">
+                                <div class="item-title-row">
+                                  <div
+                                    class="item-title chattitle font-poppins-semibold text-color-gray"
+                                  >
+                                    Sundira Ramua
+                                  </div>
+                                  <div
+                                    class="item-after font-poppins-medium"
+                                    style="font-size: 13px"
+                                  >
+                                    17:14
+                                  </div>
+                                </div>
+                                <div
+                                  class="item-text chattext font-poppins-regular"
+                                  style="margin-top: 5px"
+                                >
+                                  Lorem ipsum dolor sit amet, consectetur
+                                  adipiscing elit.
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab-2" class="page-content tab">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 20px;
+                  margin-left: 35px;
+                "
+              >
+                <h3 style="text-align: center">
+                  Your live agent is not active <br />
+                  on Instagram
+                </h3>
+              </div>
+            </div>
+            <div id="tab-3" class="page-content tab">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 20px;
+                  margin-left: 35px;
+                "
+              >
+                <h3 style="text-align: center">
+                  Your live agent is not active <br />
+                  on Messenger
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Details -->
+      <div
+        class="panel panel-right panel-details panel-cover bg-color3"
+        style="overflow: auto"
+      >
+        <!-- Top Navbar -->
+        <div class="navbar" style="position: sticky; height: 60px">
+          <div class="navbar-bg bg-color3"></div>
+          <div class="navbar-inner">
+            <div class="left">
+              <div class="title font-poppins-regular block">Details</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 20px">
+          <div class="dts-card bg-shadow">
+            <div style="padding: 5px 20px">
+              <h3
+                class="font-poppins-semibold"
+                style="font-size: 15px; color: #ccc"
+              >
+                GENERAL INFO
+              </h3>
+              <div class="row no-gap" style="padding: 0px 10px">
+                <div class="col-30">
+                  <img
+                    src="https://ui-avatars.com/api/?rounded=true&name=A&background=random"
+                    alt=""
+                    width="50"
+                  />
+                </div>
+                <div class="col-66">
+                  <p class="font-poppins-regular" style="margin-top: 5px">
+                    Alea Harris
+                  </p>
+                  <p class="text-color-gray" style="margin-top: -15px">
+                    622112345678
+                  </p>
+                </div>
+              </div>
+              <div
+                style="margin-top: 8px; height: 1px; background-color: #f1f1f1"
+              ></div>
+
+              <div class="row no-gap">
+                <div class="col-50">
+                  <p
+                    class="font-poppins-medium"
+                    style="font-size: 13px; color: #ccc"
+                  >
+                    LAST TICKET
+                  </p>
+                </div>
+                <div class="col-50">
+                  <p class="font-poppins-regular" style="font-size: 13px">
+                    Jan 1, 10:00 PM
+                  </p>
+                </div>
+              </div>
+
+              <div style="height: 1px; background-color: #f1f1f1"></div>
+
+              <div class="row no-gap">
+                <div class="col-50">
+                  <p
+                    class="font-poppins-medium"
+                    style="font-size: 13px; color: #ccc"
+                  >
+                    TICKET #
+                  </p>
+                </div>
+                <div class="col-50">
+                  <p class="font-poppins-regular" style="font-size: 12px">
+                    cs-a1g-28072021-0001
+                  </p>
+                </div>
+              </div>
+
+              <div style="height: 1px; background-color: #f1f1f1"></div>
+
+              <div class="row no-gap">
+                <div class="col-50">
+                  <p
+                    class="font-poppins-medium"
+                    style="font-size: 13px; color: #ccc"
+                  >
+                    TICKET OPEN
+                  </p>
+                </div>
+                <div class="col-50">
+                  <p class="font-poppins-regular" style="font-size: 13px">
+                    Jan 3, 08:30 PM
+                  </p>
+                </div>
+              </div>
+
+              <div style="height: 1px; background-color: #f1f1f1"></div>
+
+              <div class="row no-gap">
+                <div class="col-50">
+                  <p
+                    class="font-poppins-medium"
+                    style="font-size: 13px; color: #ccc"
+                  >
+                    LOCATION
+                  </p>
+                </div>
+                <div class="col-50">
+                  <p class="font-poppins-regular" style="font-size: 13px">
+                    Jakarta, Indonesia
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <iframe
+            id="mapLoc"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.316199113361!2d106.78819669093568!3d-6.221971493172867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1a337248745%3A0x2c3ce20a8f0fe9ab!2sRUKAN%20PERMATA%20SENAYAN%20B09!5e0!3m2!1sid!2sid!4v1646183184388!5m2!1sid!2sid"
+            width="100%"
+            height="200"
+            style="border: 0; border-radius: 0px 0px 10px 10px"
+            allowfullscreen=""
+            loading="lazy"
+          >
+          </iframe>
+
+          <div
+            class="dts-card bg-shadow"
+            style="margin-top: 30px; border-radius: 8px"
+          >
+            <div style="padding: 5px 20px">
+              <h3
+                class="font-poppins-semibold"
+                style="font-size: 15px; color: #ccc"
+              >
+                ADDITIONAL INFO
+              </h3>
+
+              <p
+                class="font-poppins-semibold"
+                style="font-size: 13px; margin-top: 20px"
+              >
+                LAST ORDER
+              </p>
+
+              <a
+                class="text-color-black font-poppins-regular"
+                href="#"
+                style="
+                  background-color: #fff;
+                  border: 2px solid #ddd;
+                  border-radius: 30px;
+                  display: block;
+                  text-align: center;
+                  padding: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <img src="assets/icon/cart.svg" alt="" /> Order #mit64on27
+              </a>
+              <a
+                class="text-color-black font-poppins-regular"
+                href="#"
+                style="
+                  background-color: #fff;
+                  border: 2px solid #ddd;
+                  border-radius: 30px;
+                  display: block;
+                  text-align: center;
+                  padding: 10px;
+                  margin-bottom: 10px;
+                "
+              >
+                <img src="assets/icon/cart.svg" alt="" /> Order #rdtsvew23
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Answer -->
+      <div
+        class="panel panel-right panel-answer panel-cover panel-init elevation-1"
+        style="width: 300px"
+      >
+        <div class="page bg-color-white">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title font-nunito-medium">Quick Answer</div>
+              <div class="subnavbar">
+                <!-- Searchbar with auto init -->
+                <form class="searchbar">
+                  <div class="searchbar-inner">
+                    <div class="searchbar-input-wrap">
+                      <input type="search" placeholder="Search" />
+                      <i class="searchbar-icon"></i>
+                      <span class="input-clear-button"></span>
+                    </div>
+                    <span class="searchbar-disable-button if-not-aurora"
+                      >Cancel</span
+                    >
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="page-content" style="margin-top: 50px">
+            <!-- Searchbar backdrop -->
+            <div class="searchbar-backdrop"></div>
+            <!-- hide-on-search element -->
+            <div
+              class="block searchbar-hide-on-search"
+              style="margin-top: 10px"
+            >
+              <center>
+                <h1>👨🏻‍💻 💬 🙌</h1>
+                <p
+                  style="font-size: 15px; margin-top: -15px"
+                  class="font-nunito-medium"
+                >
+                  Quick answer will help you to answer the most user questions.
+                </p>
+              </center>
+            </div>
+            <!-- search target list -->
+            <div
+              class="list accordion-list searchbar-found"
+              id="listAnswer"
+              style="margin-top: -10px"
+            >
+              <ul id="quickAnswer"></ul>
+            </div>
+            <!-- Nothing found message -->
+            <div class="block searchbar-not-found">
+              <center>
+                <i
+                  class="bi bi-x-circle-fill text-color-yellow"
+                  style="font-size: 80px"
+                ></i>
+                <h2>Oops!</h2>
+                <p style="margin-top: -10px">
+                  quick answer not found <br />
+                  try a different keyword.
+                </p>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page bg-color2">
+          <!-- Top Navbar -->
+          <div class="navbar" style="height: 60px">
+            <div class="navbar-bg bg-color2"></div>
+            <div class="navbar-inner">
+              <div class="left">
+                <a
+                  class="link panel-open toggle-panel"
+                  data-panel=".panel-menu"
+                  href="#"
+                  style="display: none"
+                >
+                  <i class="bi bi-chat-text text-color-black"></i>
+                </a>
+                <div
+                  class="title font-poppins-regular block"
+                  id="titleChatRoom"
+                >
+                  Customer Name
+                </div>
+              </div>
+              <div class="right">
+                <a
+                  class="link panel-open toggle-panel"
+                  data-panel=".panel-details"
+                  href="#"
+                  style="display: none"
+                >
+                  <i class="bi bi-info-circle text-color-black"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Popup -->
+          <div class="popup popup-settings">
+            <div class="block">
+              <h2 style="padding: 10px 30px">Settings</h2>
+
+              <!-- settings form -->
+              <form class="block login-forms" id="authForm">
+                <div
+                  class="list inset"
+                  style="padding: 5px; background-color: #efefef"
+                >
+                  <ul>
+                    <li class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-input-wrap four">
+                          <input
+                            type="text"
+                            placeholder="Username"
+                            name="username"
+                            value="{{username}}"
+                            validate
+                            required
+                          />
+                          <span class="input-clear-button"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="list inset"
+                  style="padding: 5px; background-color: #efefef"
+                >
+                  <ul>
+                    <li class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-input-wrap four">
+                          <input
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            id="agentemail"
+                            value="{{agentemail}}"
+                            validate
+                            required
+                          />
+                          <span class="input-clear-button"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div
+                  class="list inset"
+                  style="padding: 5px; background-color: #efefef"
+                >
+                  <ul>
+                    <li class="item-content item-input">
+                      <div class="item-inner">
+                        <div class="item-input-wrap four">
+                          <input
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            validate
+                            required
+                          />
+                          <span class="input-clear-button"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Settings Form Submit -->
+                <center>
+                  <button
+                    type="submit"
+                    class="button button-round button-fill form-button-submit bg-color1"
+                  >
+                    Save
+                  </button>
+                </center>
+              </form>
+            </div>
+          </div>
+
+          <div class="popup popup-files">
+            <div class="block">
+              <input
+                type="file"
+                id="fileInput"
+                name="images"
+                accept="image/*"
+                style="display: none"
+              />
+              <div
+                class="files-area"
+                style="
+                  padding: 20px;
+                  border-radius: 20px;
+                  border: 2px solid var(--color1);
+                  border-style: dotted;
+                  text-align: center;
+                "
+              >
+                <div class="before-input">
+                  <i
+                    class="bi bi-image-fill color1"
+                    style="font-size: 50px"
+                  ></i>
+                  <h1 style="margin-top: 5px">Send Image</h1>
+                  <!-- Close Popup -->
+                  <h3 class="font-nunito-regular">
+                    <a class="link browse-file" href="#">browse image files</a>
+                  </h3>
+                </div>
+
+                <div class="thumbnail-file" style="display: none">
+                  <img
+                    src=""
+                    style="
+                      max-width: 250px;
+                      max-height: 250px;
+                      border-radius: 10px;
+                    "
+                    alt=""
+                  />
+                  <h3>
+                    <a class="link browse-file" href="#">replace image files</a>
+                  </h3>
+
+                  <div class="item-input-wrap input-caption">
+                    <textarea
+                      placeholder="Type a message"
+                      id="captionFile"
+                      style="width: 100%"
+                    ></textarea>
+                  </div>
+
+                  <br />
+                  <a
+                    href="#"
+                    class="button button-large button-fill bg-color1 text-color-black"
+                    id="sendFile"
+                    >Send Image</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Input -->
+          <div class="toolbar messagebar disabled">
+            <div class="toolbar-inner">
+              <a
+                class="link toggle-sheet attach-icon panel-open"
+                href="#"
+                data-panel=".panel-answer"
+              >
+                <i class="bi bi-chat-text"></i>
+              </a>
+              <a
+                class="link toggle-sheet attach-icon popup-open"
+                href="#"
+                data-popup=".popup-files"
+              >
+                <i class="bi bi-paperclip"></i>
+              </a>
+
+              <div class="messagebar-area">
+                <textarea
+                  id="inputMsg"
+                  class="resizable textmsg"
+                  placeholder="Type a message"
+                ></textarea>
+                <span
+                  style="margin-right: 20px"
+                  class="input-clear-button"
+                ></span>
+              </div>
+              <a class="link send-link" style="display: none" href="#">
+                <i class="bi bi-arrow-up-circle-fill"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Scrollable page content -->
+          <div class="page-content">
+            <!-- Messages Content -->
+            <div class="messages">
+              <!-- <div class="messages-title"><b id="dateMsg"></b> <span id="timeMsg"></span></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Path to jQuery-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script src="js/framework7.bundle.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script src="js/_custom-chatroom.js"></script>
+  </body>
+</html>

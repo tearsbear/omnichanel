@@ -1,0 +1,122 @@
+/* import font */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/*------------------*/
+
+/* define color */
+
+:root {
+  --color0: #ffffff;
+  --color1: #ffdd00;
+  --color2: #fffdfd;
+  --color3: #f9f9f9;
+  --color4: #f3f3f3;
+  --color5: #f8f8f8;
+  --color6: #f1f1f1;
+  --color7: #d8d8d8;
+  --darkmode-color1: #222;
+  --darkmode-color2: #1f1f1f;
+  --darkmode-color3: #333333;
+  --border-color: #f1f1f1;
+  --shadow1: 0px 1px 6px #d1d1d1;
+  --f7-message-sent-bg-color: var(--color1);
+  --f7-message-sent-text-color: #222;
+  --f7-navbar-border-color: var(--border-color);
+  --f7-message-text-footer-font-size: 9px;
+  --f7-messagebar-height: 60px;
+  --f7-messagebar-bg-color: var(--color3);
+  --f7-messagebar-textarea-height: 40px;
+  --f7-messagebar-textarea-padding: 9px 20px;
+  --f7-messagebar-textarea-border-radius: 20px;
+  --f7-messagebar-textarea-bg-color: #f1f1f1;
+  --f7-messagebar-textarea-border: 1px solid var(--border-color);
+  --f7-list-link-pressed-bg-color: transparent;
+}
+
+/* define nunito font */
+
+.font-nunito-light {
+  font-weight: 300 !important;
+  font-family: "Nunito", sans-serif;
+}
+
+.font-nunito-regular {
+  font-weight: 400 !important;
+  font-family: "Nunito", sans-serif;
+}
+
+.font-nunito-medium {
+  font-weight: 600 !important;
+  font-family: "Nunito", sans-serif;
+}
+
+.font-nunito-bold {
+  font-weight: 700 !important;
+  font-family: "Nunito", sans-serif;
+}
+
+/* define poppins font */
+
+.font-poppins-light {
+  font-weight: 300 !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.font-poppins-regular {
+  font-weight: 400 !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.font-poppins-medium {
+  font-weight: 500 !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.font-poppins-semibold {
+  font-weight: 600 !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.font-poppins-bold {
+  font-weight: 700 !important;
+  font-family: "Poppins", sans-serif;
+}
+
+/* define bgcolor and color class */
+
+.bg-color1 {
+  background-color: var(--color1);
+}
+
+.color1 {
+  color: var(--color1);
+}
+
+.bg-color2 {
+  background-color: var(--color5);
+}
+
+.color2 {
+  color: var(--color2);
+}
+
+.bg-color3 {
+  background-color: var(--color3);
+}
+
+.bg-darkmode1 {
+  background-color: var(--darkmode-color1);
+}
+
+.bg-darkmode2 {
+  background-color: var(--darkmode-color2);
+}
+
+.bg-darkmode3 {
+  background-color: var(--darkmode-color3);
+}
+
+.bg-shadow {
+  box-shadow: var(--shadow1);
+}

@@ -1,0 +1,137 @@
+     .choose-bgcolor {
+         background-color: #f9f9f9;
+     }
+
+     .choose-header {
+         text-align: center;
+         background-color: var(--color1);
+     }
+
+     .choose-header img {
+         width: 400px;
+         z-index: 999;
+         position: relative;
+         margin-top: 50px;
+     }
+
+     .choose-wave {
+        margin-top: -60px;
+    }
+
+     .choose-card {
+         height: auto;
+         width: 800px;
+         border-radius: 20px;
+         margin: 30px auto;
+     }
+
+     .choose-content {
+         padding-top: 10px;
+     }
+
+     .choose-content h1 {
+         text-align: center;
+         font-size: 38px;
+     }
+
+     .choose-content p {
+         text-align: center;
+         font-size: 17px;
+         margin-top: -22px;
+         color: #5a5a5a;
+     }
+
+     .choose-listbot {
+         padding-bottom: 50px;
+         margin-top: 10px;
+         text-align: center;
+     }
+
+     .cover-bot {
+         width: 100px;
+         display: inline-block;
+         padding: 15px 30px 15px;
+         border-radius: 10px;
+     }
+
+     .cover-bot:hover {
+         background-color: var(--color6);
+     }
+
+     .cover-bot>img {
+         width: 75px;
+         position: relative;
+         background-color: var(--color0);
+         margin-left: -5px;
+         padding: 5px;
+         border-radius: 100px;
+     }
+
+     .bot-title {
+         text-align: center;
+         color: var(--darkmode-color1);
+         margin-top: 10px;
+     }
+     .bot-sub-title {
+        text-align: center;
+        color: var(--darkmode-color3);
+        margin-top: -15px;
+    }
+
+     @media only screen and (max-width: 700px) {
+         .choose-header {
+             height: 200px;
+         }
+         .choose-header img {
+             width: 200px;
+         }
+         .choose-card {
+             width: 340px;
+             margin-top: -80px;
+         }
+         .choose-content h1 {
+             font-size: 22px;
+         }
+         .choose-content p {
+             margin-top: -10px;
+             font-size: 13px;
+         }
+     }
+
+     @media only screen and (min-width: 768px) {
+        .choose-wave {
+            margin-top: 0px;
+        }
+         .choose-card {
+             width: 650px;
+             margin-top: -180px;
+         }
+     }
+
+     @media only screen and (min-width: 1024px) {
+         .choose-card {
+             width: 880px;
+             margin-top: -80px;
+         }
+     }
+
+     @media only screen and (min-width: 1366px) {
+         .choose-card {
+             width: 880px;
+             margin-top: -260px;
+         }
+     }
+
+     @media only screen and (min-width: 1440px) {
+         .choose-card {
+             width: 80%;
+             margin-top: -280px;
+         }
+     }
+
+     @media only screen and (min-width: 1920px) {
+         .choose-card {
+             width: 900px;
+             margin-top: -350px;
+         }
+     }

@@ -1,0 +1,125 @@
+    .login-bgcolor {
+        background-color: #f9f9f9;
+    }
+
+    .login-header {
+        text-align: center;
+        background-color: var(--color1);
+    }
+
+    .login-header img {
+        width: 400px;
+        z-index: 999;
+        position: relative;
+        margin-top: 50px;
+    }
+
+    .login-wave {
+        margin-top: -60px;
+    }
+
+    .login-card {
+        height: auto;
+        width: 800px;
+        border-radius: 20px;
+        margin: -230px auto;
+    }
+
+    .login-form {
+        padding-top: 10px;
+    }
+
+    .login-form h1 {
+        text-align: center;
+        font-size: 38px;
+    }
+
+    .login-form p {
+        text-align: center;
+        font-size: 17px;
+        margin-top: -22px;
+        color: #5a5a5a;
+    }
+
+    .login-form-parent {
+        max-width: 70%;
+        margin: auto !important;
+    }
+
+    .form-button-submit {
+        margin-top: 35px;
+        margin-bottom: 25px;
+        height: 55px;
+        width: 50%;
+        font-size: 18px;
+        text-transform: capitalize;
+        color: #222;
+        border: none;
+    }
+
+    @media only screen and (max-width: 700px) {
+        .login-header {
+            height: 200px;
+        }
+        .login-header img {
+            width: 200px;
+        }
+        .login-wave {
+            margin-top: 0px;
+        }
+        .login-card {
+            width: 320px;
+            margin-top: -160px;
+        }
+        .login-form h1 {
+            font-size: 22px;
+        }
+        .login-form p {
+            margin-top: -10px;
+            font-size: 15px;
+        }
+        .login-form-parent {
+            max-width: 80%;
+        }
+        .form-button-submit {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .login-wave {
+            margin-top: 0px;
+        }
+        .login-card {
+            width: 500px;
+            margin-top: -130px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .login-card {
+            width: 650px;
+            margin-top: -180px;
+        }
+    }
+
+    @media only screen and (min-width: 1366px) {
+        .login-card {
+            width: 800px;
+            margin-top: -260px;
+        }
+    }
+
+    @media only screen and (min-width: 1440px) {
+        .login-card {
+            width: 800px;
+            margin-top: -280px;
+        }
+    }
+
+    @media only screen and (min-width: 1920px) {
+        .login-card {
+            width: 800px;
+            margin-top: -350px;
+        }
+    }
